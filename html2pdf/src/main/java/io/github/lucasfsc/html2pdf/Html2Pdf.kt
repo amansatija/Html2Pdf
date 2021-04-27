@@ -16,8 +16,13 @@ class Html2Pdf private constructor(
                 onCompleteConversion.onSuccess()
             }
 
-            override fun onWriteFailed() {
-                onCompleteConversion.onFailed()
+            override fun onWriteFailed(error: String?) {
+                var mStrMsg = "";
+                if(error!=null){
+                   mStrMsg = error;
+                }
+                var mException : Exception = Exception(mStrMsg);
+                onCompleteConversion.onFailed(Exception(error))
             }
 
         })
@@ -31,7 +36,7 @@ class Html2Pdf private constructor(
 
         fun onSuccess()
 
-        fun onFailed()
+        fun onFailed(error: Exception?)
 
     }
 

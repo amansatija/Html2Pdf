@@ -59,7 +59,11 @@ internal class PdfConverter private constructor() : Runnable {
 
                                 override fun onWriteFailed(error: CharSequence?) {
                                     super.onWriteFailed(error)
-                                    mOnComplete?.onWriteFailed()
+                                    var mStrErr:String? = "Opps Html2Pdf Library failure..!!";
+                                    if(error!=null){
+                                        mStrErr = error?.toString();
+                                    }
+                                    mOnComplete?.onWriteFailed(mStrErr);
                                 }
                             })
 
@@ -122,7 +126,7 @@ internal class PdfConverter private constructor() : Runnable {
 
         interface OnComplete {
             fun onWriteComplete()
-            fun onWriteFailed()
+            fun onWriteFailed(error: String?)
         }
     }
 }

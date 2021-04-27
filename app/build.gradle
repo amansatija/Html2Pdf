@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "io.github.lucasfsc.html2pdf"
+        applicationId "io.github.lucasfsc.html2pdfapp"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
