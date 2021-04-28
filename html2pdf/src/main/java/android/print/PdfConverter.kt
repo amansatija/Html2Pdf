@@ -20,6 +20,10 @@ internal class PdfConverter private constructor() : Runnable {
     private var mWebView: WebView? = null
     private var mOnComplete: OnComplete? = null
 
+    fun resetIsConvertingFlag(){
+        mIsCurrentlyConverting = false;
+    }
+
     private val outputFileDescriptor: ParcelFileDescriptor?
         get() {
             try {
@@ -42,6 +46,7 @@ internal class PdfConverter private constructor() : Runnable {
     override fun run() {
         mWebView = WebView(mContext)
         mWebView!!.webViewClient = object : WebViewClient() {
+
             override fun onPageFinished(view: WebView, url: String) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
                     throw RuntimeException("call requires API level 19")
