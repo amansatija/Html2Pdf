@@ -106,7 +106,7 @@ internal class PdfConverter private constructor() : Runnable {
         handler.post(runnable)
     }
 
-    private fun destroy() {
+    public fun destroy() {
         mContext = null
         mHtmlString = null
         mPdfFile = null
